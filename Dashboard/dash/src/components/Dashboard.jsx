@@ -41,39 +41,49 @@ function Dashboard() {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen p-8">
-      <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+      <div className="bg-white p-6 rounded-lg shadow-lg text-center mb-8">
         <h2 className="text-2xl font-semibold mb-4">Form</h2>
-        <input
-          type="text"
-          placeholder="Username"
-          className="w-full px-3 py-2 border rounded-md mb-2"
-          value={formData.username}
-          onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full px-3 py-2 border rounded-md mb-2"
-          value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-        />
-        <input
-          type="url"
-          placeholder="Website"
-          className="w-full px-3 py-2 border rounded-md mb-4"
-          value={formData.website}
-          onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-        />
+        <div className="mb-2">
+      <div className="fixed bottom-4 right-4 text-lg font-bold text-gray-300 pointer-events-none z-50">
+        VEDANT'S HUB
+      </div>
+ 
+          <input
+            type="text"
+            placeholder="Username"
+            className="w-48 px-3 py-2 border rounded-md"
+            value={formData.username}
+            onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+          />
+        </div>
+        <div className="mb-2">
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-48 px-3 py-2 border rounded-md"
+            value={formData.password}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            type="url"
+            placeholder="Website"
+            className="w-48 px-3 py-2 border rounded-md"
+            value={formData.website}
+            onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+          />
+        </div>
         <button
-          className="bg-green-500 text-white px-4 py-2 rounded-lg w-full hover:bg-green-600"
+          className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
           onClick={handleSubmit}
         >
           {editIndex !== null ? 'Update' : 'Submit'}
         </button>
       </div>
 
-      <table className="mt-8 w-full border-collapse border bg-white">
+      <table className="w-full max-w-sm border-collapse border bg-white">
         <thead>
           <tr className="bg-gray-200">
             <th className="border p-2">USERNAME</th>

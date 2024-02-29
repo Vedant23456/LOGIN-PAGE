@@ -8,8 +8,8 @@ import { BrowserRouter as Router,Route, Routes } from 'react-router-dom';
 
 const App = () => {
   return (
-   
       <div>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -17,7 +17,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
-    
+     </div>    
   );
 }
 

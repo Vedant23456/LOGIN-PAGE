@@ -2,61 +2,49 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Login() {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setIsButtonDisabled(!(formData.email && formData.password));
-  };
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    console.log('Form submitted:', formData);
+    // Implement login logic here
+    console.log('Login data:', formData);
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen flex flex-col items-center justify-center relative">
-      <div className="bg-white p-10 rounded-lg shadow-md text-center">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Login</h2>
-
-        <form onSubmit={handleSubmit}>
-          <div className="mt-4">
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter Your Email"
-              className="input-field"
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="mt-4">
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter Password"
-              className="input-field"
-              onChange={handleInputChange}
-            />
-          </div>
+    <div className="bg-gray-100 min-h-screen flex justify-center items-center">
+      <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+        <h2 className="text-2xl font-semibold mb-6">Login</h2>
+        <form onSubmit={handleSubmit} className="flex flex-col items-center w-full">
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full px-4 py-2 mb-4 border rounded-md"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full px-4 py-2 mb-6 border rounded-md"
+            value={formData.password}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            required
+          />
           <button
             type="submit"
-            className={`btn-primary mt-4 w-full transition duration-300 ${isButtonDisabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'}`}
-            disabled={isButtonDisabled}
+            className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition duration-300"
           >
             Login
           </button>
         </form>
-
-        <div className="mt-4 text-gray-800">Or</div>
-        <Link to="/signup">
-          <button className="btn-secondary mt-4 w-full transition duration-300 bg-gray-500 hover:bg-gray-600">Sign Up</button>
-        </Link>
+        <p className="mt-4">
+          Don't have an account? <Link to="/signup" className="text-blue-500">Sign Up</Link>
+        </p>
       </div>
-
-      <div className="absolute bottom-4 right-4 text-gray-400 text-xs">Watermarked by Vedant's Hub</div>
     </div>
   );
 }
